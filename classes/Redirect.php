@@ -1,5 +1,15 @@
 <?php
+
+/**
+ * @category Class Redirect
+ * @description processing operations with 
+ * @author Nguyen Duc Dai
+ */
 	class Redirect {
+		/**
+		 * Chuyển hướng trang 
+		 * @param null $location
+		 */
 		public static function to($location = null) {
 			if ($location) {
 				if (is_numeric($location)) {

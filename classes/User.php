@@ -1,10 +1,25 @@
 <?php
+
+/**
+ * @category Class User
+ * @description processing operations with User
+ * @author Nguyen Duc Dai
+ */
 	class User {
+		/**
+		 * khởi tạo biến
+		 * @var Database|null
+		 */
 		private $_db,
 				$_data,
 				$_sessionName,
 				$_cookieName,
 				$_isLoggedIn;
+
+		/**
+		 * User constructor.
+		 * @param null $user
+		 */
 
 		public function __construct($user = null) {
 			$this->_db 			= Database::getInstance();
@@ -26,6 +41,12 @@
 			}
 		}
 
+		/**
+		 * cập nhật trường dữ liệu người dùng
+		 * @param array $fields mảng chứa các trường
+		 * @param null $id id
+		 * @throws Exception
+		 */
 		public function update($fields = array(), $id = null) {
 
 			if (!$id && $this->isLoggedIn()) {
@@ -37,12 +58,22 @@
 			}
 		}
 
+		/**
+		 * Thực hiện tạo mới người dùng
+		 * @param array $fields mảng chứa trương dữ liệu
+		 * @throws Exception
+		 */
 		public function create($fields = array()) {
 			if (!$this->_db->insert('users', $fields)) {
 				throw new Exception("There was a problem creating your account");
 			}
 		}
 
+		/**
+		 * Thực hiện tạo mới người dùng
+		 * @param null $user
+		 * @return bool
+		 */
 		public function find($user = null) {
 			if ($user) {
 				$fields = (is_numeric($user)) ? 'id' : 'username';	//Numbers in username issues
@@ -56,6 +87,13 @@
 			return false;
 		}
 
+		/**
+		 * Thao tác đăng nhập 
+		 * @param null $username tên đăng nhập
+		 * @param null $password mật khẩu 	
+		 * @param bool $remember ghi nhớ hay không 
+		 * @return bool
+		 */
 		public function login($username = null, $password = null, $remember = false) {
 			if (!$username && !$password && $this->exists()) {
 				Session::put($this->_sessionName, $this->data()->ID);
@@ -87,6 +125,11 @@
 			return false;
 		}
 
+		/**
+		 * Tìm kiếm tên đăng nhập trùng từ  cơ sở dữ liệu
+		 * @param $key từ khóa 
+		 * @return bool
+		 */
 		public function hasPermission($key) {
 			$group = $this->_db->get('groups', array('ID', '=', $this->data()->userGroup));
 			if ($group->count()) {

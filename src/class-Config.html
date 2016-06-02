@@ -1,0 +1,157 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>overview</title>
+    <link rel="stylesheet" href="resources/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/style.css">
+</head>
+
+<body>
+<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="overview.html" class="navbar-brand">Overview</a>
+        </div>
+        <div class="collapse navbar-collapse">
+
+            <form>
+                <input type="hidden" name="cx" value="">
+                <input type="hidden" name="ie" value="UTF-8">
+                <div class="form-group">
+                    <input type="text" name="q" class="search-query form-control" style="margin-top: 10px; width: 500px; height: 34px" placeholder="Search">
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav">
+                <li n:class="'package' === $active ? active" n:if="$packages">
+                    <a n:tag-if="'package' !== $active && $package" href="class-Config.html" title="Summary of {$package}"><span>Config</span></a>
+                </li>
+                <li n:class="'namespace' === $active ? active" n:if="$namespaces">
+                    <a n:tag-if="'namespace' !== $active && $namespace" href="{$namespace|namespaceUrl}" title="Summary of {$namespace}"><span>Cookie</span></a>
+                </li>
+                <li n:class="'class' === $active ? active" n:if="!$function && !$constant">
+                    <a n:tag-if="'class' !== $active && $class" href="{$class|classUrl}" title="Summary of {$class->name}"><span>DataBase</span></a>
+                </li>
+                <li n:class="'function' === $active ? active" n:if="$function">
+                    <a n:tag-if="'function' !== $active" href="{$function|functionUrl}" title="Summary of {$function->name}"><span>Hash</span></a>
+                </li>
+                <li n:class="'constant' === $active ? active" n:if="$constant">
+                    <a n:tag-if="'constant' !== $active" href="{$constant|constantUrl}" title="Summary of {$constant->name}"><span>Redirect</span></a>
+                </li>
+
+                <li class="divider-vertical" n:if="$config->tree || $config->deprecated || $config->todo"></li>
+
+                <li n:class="'tree' === $active ? active" n:if="$config->tree">
+                    <a n:tag-if="'tree' !== $active" href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Input</span></a>
+                </li>
+                <li n:class="$active === 'annotation-group-' . $annotation ? active">
+                    <a n:tag-if="$active !== 'annotation-group-' . $annotation" href="annotation-group-{$annotation}.html" title="List of elements with {$annotation} annotation">
+                        <span>Session</span>
+                    </a>
+                </li>
+                <li class="divider-vertical" n:if="$config->download"></li>
+
+                <li n:if="$config->download">
+                    <a href="{$archive}" title="Download documentation as ZIP archive"><span>Validate</span></a>
+                </li>
+                <li n:if="$config->download">
+                    <a href="{$archive}" title="Download documentation as ZIP archive"><span>User</span></a>
+                </li>
+                <li n:if="$config->download">
+                    <a href="{$archive}" title="Download documentation as ZIP archive"><span>Token</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="left" style="margin-top: 60px">
+    <div id="menu">
+
+        <ul>
+
+        </ul>
+
+
+        <div id="groups">
+            <h3 style="margin-top: 4px;">Classes</h3>
+            <ul >
+                <li style="background-color:#337AB0;border-radius: 4px"><a  style="color: #ffffff" href="class-Config.html">Config</a></li>
+                <li><a href="class-Cookie.html">Cookie</a></li>
+                <li><a href="class-Database.html">Database</a></li>
+                <li><a href="class-Hash.html">Hash</a></li>
+                <li><a href="class-Input.html">Input</a></li>
+                <li><a href="class-Redirect.html">Redirect</a></li>
+                <li><a href="class-Session.html">Session</a></li>
+                <li><a href="class-Validate.html">Validate</a></li>
+                <li><a href="class-User.html">User</a></li>
+                <li><a href="class-Token.html">Token</a></li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right" style="margin-top: 60px">
+    <div id="rightInner">
+        <div id="content" class="class">
+            <h1>Class Config</h1>
+
+
+            <div class="description" style="border-bottom: 1px solid #E7E7E7; margin-bottom: 5px;margin-top: 0px">
+                <p>Lớp thực hiện thao tác làm việc với cấu hình.</p>
+            </div>
+            <div class="info">
+                <b></b> <a href="source-class-Config.html" title="Go to source code">Config.php</a>
+                <br>
+            </div>
+            <table class="table table-bordered" id="methods">
+                <div id="">
+                <caption>Methods summary</caption>
+                <tr data-order="get" id="_get">
+
+                    <td class="attributes"><code>
+                        public static
+
+                        string|false
+
+                    </code>
+                    </td>
+
+                    <td class="name"><div>
+                        <code><a href="source-class-Config.html#9-32" title="Go to source code">get</a>( <span>string <var>$path</var> = <span class="php-keyword1">null</span></span> )</code>
+                    </div></td>
+                </tr>
+                </div>
+            </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+<script src="{='resources/combined.js'|staticFile}"></script>
+<script src="{='elementlist.js'|staticFile}"></script>
+</div>
+</body>
+</html>

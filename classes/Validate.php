@@ -1,13 +1,32 @@
 <?php
+
+/**
+ * @category Class Validate
+ * @description processing operations with Validate
+ * @author Nguyen Duc Dai
+ */
 	class Validate {
+		/**
+		 * Khởi tạo biến
+		 * @var bool
+		 */
 		private $_passed = false,
 				$_errors = array(),
 				$_db = null;
 
+		/**
+		 * Validate constructor.
+		 */
 		public function __construct() {
 			$this->_db = Database::getInstance();
 		}
 
+		/**
+		 * Kiểm tra dữ liệu vào
+		 * @param $source Nguồn cần kiểm tra
+		 * @param array $items mảng chứa các option cần kiểm tra
+		 * @return $this biến gọi trong class
+		 */
 		public function check($source, $items = array()) {
 			foreach ($items as $item => $rules) {
 				foreach ($rules as $rule => $rule_value) {
@@ -51,14 +70,27 @@
 			return $this;
 		}
 
+		/**
+		 * Thao tác thêm lỗi
+		 * @param $error Lỗi
+		 */
+
 		private function addError($error) {
 			$this->_errors[] = $error;
 		}
 
+		/**
+		 * Lấy các lỗi 
+		 * @return bool
+		 */
 		public function errors() {
 			return $this->_errors;
 		}
 
+		/**
+		 * Kiểm tra vi phạm l
+		 * @return bool 
+		 */
 		public function passed() {
 			return $this->_passed;
 		}
